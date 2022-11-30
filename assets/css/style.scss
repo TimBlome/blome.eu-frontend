@@ -6,15 +6,12 @@ body{
     min-height: 100vh;
 
     #__next{
-        min-height: 100%;
+        min-height: 100vh;
     }
 }
 
-
-.footer{
-    width: 100vw;
-    bottom: 0;
-    position: absolute;
+#contentPanel{
+    min-height: 88vh;
 }
 
 .article-hero{

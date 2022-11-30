@@ -4,7 +4,9 @@ import Nav from "./nav"
 const Layout = ({ children, categories, seo }) => (
   <>
     <Nav categories={categories} />
-    {children}
+    <div id="contentPanel">
+      {children}
+    </div>
     <footer className="footer">
       <div className="content has-text-centered">
         <div className="block">
