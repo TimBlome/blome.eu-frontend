@@ -11,12 +11,12 @@ const Articles = ({ articles }) => {
     <div className="columns is-multiline">
       {articles.map((article, i) => {
         return (
-          
-              <Card
+          <div className="column is-half is-one-third-fullhd">
+            <Card
                 article={article}
                 key={article.attributes.slug}
               />
-            
+          </div>
         )
       })}
     </div>

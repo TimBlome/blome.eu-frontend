@@ -11,7 +11,6 @@ const Home = ({ articles, categories, homepage }) => {
       <section className="hero is-small">
         <div className="hero-body">
           <h1 className="title is-1">{homepage.attributes.hero.title}</h1>
-
         </div>
       </section>
       {/* Articles */}

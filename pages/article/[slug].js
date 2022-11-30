@@ -4,6 +4,7 @@ import { fetchAPI } from "../../lib/api"
 import Layout from "../../components/layout"
 import NextImage from "../../components/image"
 import Seo from "../../components/seo"
+import Author from "../../components/author"
 import { getStrapiMedia } from "../../lib/media"
 
 const Article = ({ article, categories }) => {
@@ -16,44 +17,37 @@ const Article = ({ article, categories }) => {
     article: true,
   }
 
+  const heroStyle = {
+    backgroundImage: 'url(' + getStrapiMedia(article.attributes.image) + ')'
+  };
+
+  const titleStyle = {
+    fontSize: 100 / article.attributes.title.length + 'vw'
+  }
+
   return (
     <Layout categories={categories.data}>
       <Seo seo={seo} />
-      <div
-        id="banner"
-        className="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-padding uk-margin"
-        data-src={imageUrl}
-        data-srcset={imageUrl}
-        data-uk-img
-      >
-        <h1>{article.attributes.title}</h1>
-      </div>
-      <div className="uk-section">
-        <div className="uk-container uk-container-small">
-          <ReactMarkdown
-            source={article.attributes.content}
-            escapeHtml={false}
-          />
-          <hr className="uk-divider-small" />
-          <div className="uk-grid-small uk-flex-left" data-uk-grid="true">
-            <div>
-              {article.attributes.author.picture && (
-                <NextImage image={article.attributes.author.picture} />
-              )}
-            </div>
-            <div className="uk-width-expand">
-              <p className="uk-margin-remove-bottom">
-                By {article.attributes.author.name}
-              </p>
-              <p className="uk-text-meta uk-margin-remove-top">
-                <Moment format="MMM Do YYYY">
-                  {article.attributes.published_at}
-                </Moment>
-              </p>
-            </div>
-          </div>
+      <div className="hero">
+        <div className="hero-body article-hero has-text-centered" style={heroStyle}>
+          <h1 style={titleStyle}>{article.attributes.title}</h1>
         </div>
       </div>
+      <div className="container">
+        <div className="section content">
+        <ReactMarkdown
+            source={article.attributes.content}
+            escapeHtml={false}
+        />
+      </div>
+      <div className="section">
+        <Author author={article.attributes.author}></Author>
+        <Moment format="MMM Do YYYY">
+                  {article.attributes.published_at}
+        </Moment>
+      </div>
+      </div>
+
     </Layout>
   )
 }
@@ -76,10 +70,10 @@ export async function getStaticProps({ params }) {
     filters: {
       slug: params.slug,
     },
-    populate: "*",
+    populate: "*"
   })
   const categoriesRes = await fetchAPI("/categories")
-
+  console.log(articlesRes, articlesRes.data[0].attributes, articlesRes.data[0].attributes.author.data.attributes );
   return {
     props: { article: articlesRes.data[0], categories: categoriesRes },
     revalidate: 1,

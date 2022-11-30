@@ -5,7 +5,7 @@ import NextImage from "./image"
 const Card = ({ article }) => {
   return (
     <Link href={`/article/${article.attributes.slug}`}>
-      <article className="column is-half">
+      <article>
           <NextImage width="100%" height="100%" image={article.attributes.image} />
           <p id="category" className="uk-text-uppercase">
             {article.attributes.category.name}
