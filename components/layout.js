@@ -3,32 +3,26 @@ import Nav from "./nav"
 
 const Layout = ({ children, categories, seo }) => (
   <>
-    <Nav categories={categories} />
-    <div id="contentPanel">
-      {children}
-    </div>
-    <footer className="footer">
-      <div className="content has-text-centered">
-        <div className="block">
-          <div className="level">
-            <div className="level-item">
-              <a href="/">Home</a>
-            </div>
-            <div className="level-item">
-              <a href="#">GitHub</a>
-            </div>
-            <div className="level-item">
-              <a href="#Impressum">Impressum</a>
-            </div>
-          </div>
+    <div className="flex flex-col min-h-screen">
+      <div>
+        <Nav categories={categories} />
+      </div>
+      <div className="flex-1 md:container md:mx-auto p-4">
+        {children}
+      </div>
+      <footer className="flex-none p-4 bg-slate-200 align-middle ">
+        <div className="flex gap-4 justify-center">
+          <a href="/">Home</a>
+          <a href="#">GitHub</a>
+          <a href="#Impressum">Impressum</a>
         </div>
-        <div className="block">
+        <div className="text-sm">
           <p>
             <strong>blome.eu</strong> by Tim Moritz Blome
           </p>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </>
 )
 

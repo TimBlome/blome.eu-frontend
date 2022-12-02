@@ -12,11 +12,9 @@ const Category = ({ category, categories }) => {
   return (
     <Layout categories={categories.data}>
       <Seo seo={seo} />
-      <section className="hero is-small">
-        <div className="hero-body">
-          <h1 className="title is-1">{category.attributes.name}</h1>
-        </div>
-      </section>
+      <div>
+        <h1 className="font-bold text-xl mx-auto text-center m-4 p-4">{category.attributes.name}</h1>
+      </div>
       {/* Articles */}
       <Articles articles={category.attributes.articles.data} />
     </Layout>
@@ -41,10 +39,10 @@ export async function getStaticProps({ params }) {
     filters: { slug: params.slug },
     populate: {
       articles: {
-        populate: "*",
+        populate: "*"
       },
     },
-  })
+  });
   const allCategories = await fetchAPI("/categories")
 
   return {

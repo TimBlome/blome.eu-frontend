@@ -28,24 +28,20 @@ const Article = ({ article, categories }) => {
   return (
     <Layout categories={categories.data}>
       <Seo seo={seo} />
-      <div className="hero">
-        <div className="hero-body article-hero has-text-centered" style={heroStyle}>
-          <h1 style={titleStyle}>{article.attributes.title}</h1>
-        </div>
+      <div className="bg-cover bg-center text-white text-center min-h-56 rounded-t-sm overflow-hidden" style={heroStyle}>
+        <h1 style={titleStyle}>{article.attributes.title}</h1>
       </div>
-      <div className="container">
-        <div className="section content">
+      <div className="prose lg:prose-xl">
         <ReactMarkdown
             source={article.attributes.content}
             escapeHtml={false}
         />
       </div>
-      <div className="section">
+      <div className="text-sm my-5">
         <Author author={article.attributes.author}></Author>
         <Moment format="MMM Do YYYY">
                   {article.attributes.published_at}
         </Moment>
-      </div>
       </div>
 
     </Layout>
