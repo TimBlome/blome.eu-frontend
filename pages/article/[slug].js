@@ -22,7 +22,7 @@ const Article = ({ article, categories }) => {
   };
 
   const titleStyle = {
-    fontSize: 100 / article.attributes.title.length + 'vw'
+    fontSize: 75 / article.attributes.title.length + 'vw'
   }
 
   return (
@@ -31,17 +31,19 @@ const Article = ({ article, categories }) => {
       <div className="bg-cover bg-center text-white text-center min-h-56 rounded-t-sm overflow-hidden" style={heroStyle}>
         <h1 style={titleStyle}>{article.attributes.title}</h1>
       </div>
-      <div className="prose lg:prose-xl">
-        <ReactMarkdown
-            source={article.attributes.content}
-            escapeHtml={false}
-        />
-      </div>
-      <div className="text-sm my-5">
-        <Author author={article.attributes.author}></Author>
-        <Moment format="MMM Do YYYY">
-                  {article.attributes.published_at}
-        </Moment>
+      <div className="my-5 mx-auto">
+        <div className="prose lg:prose-xl">
+          <ReactMarkdown
+              source={article.attributes.content}
+              escapeHtml={false}
+          />
+        </div>
+        <div className="text-sm my-5">
+          <Author author={article.attributes.author}></Author>
+          <Moment format="MMM Do YYYY">
+                    {article.attributes.published_at}
+          </Moment>
+        </div>
       </div>
 
     </Layout>
