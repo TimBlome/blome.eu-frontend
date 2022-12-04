@@ -13,8 +13,8 @@ const Layout = ({ children, categories, seo }) => (
       <footer className="flex-none p-4 bg-slate-200 align-middle ">
         <div className="flex gap-4 justify-center">
           <a href="/">Home</a>
-          <a href="#">GitHub</a>
-          <a href="#Impressum">Impressum</a>
+          <a href="https://github.com/TimBlome">GitHub</a>
+          <a href="/impressum">Impressum</a>
         </div>
         <div className="text-sm text-center m-4">
           <p>
