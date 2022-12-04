@@ -16,7 +16,7 @@ const Layout = ({ children, categories, seo }) => (
           <a href="#">GitHub</a>
           <a href="#Impressum">Impressum</a>
         </div>
-        <div className="text-sm">
+        <div className="text-sm text-center m-4">
           <p>
             <strong>blome.eu</strong> by Tim Moritz Blome
           </p>
