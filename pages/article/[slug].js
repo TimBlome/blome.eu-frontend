@@ -21,18 +21,14 @@ const Article = ({ article, categories }) => {
     backgroundImage: "url(" + getStrapiMedia(article.attributes.image) + ")",
   }
 
-  const titleStyle = {
-    fontSize: 75 / article.attributes.title.length + "vw",
-  }
-
   return (
     <Layout categories={categories.data}>
       <Seo seo={seo} />
       <div
-        className="bg-cover bg-center text-white text-center min-h-56 rounded-t-sm overflow-hidden"
+        className="bg-cover bg-center text-white text-8xl lg:py-20 py-5 text-center rounded-t-sm overflow-hidden"
         style={heroStyle}
       >
-        <h1 style={titleStyle}>{article.attributes.title}</h1>
+        <h1>{article.attributes.title}</h1>
       </div>
       <div className="my-5 mx-auto">
         <div className="prose lg:prose-xl">
@@ -71,11 +67,6 @@ export async function getStaticProps({ params }) {
     populate: "*",
   })
   const categoriesRes = await fetchAPI("/categories")
-  console.log(
-    articlesRes,
-    articlesRes.data[0].attributes,
-    articlesRes.data[0].attributes.author.data.attributes
-  )
   return {
     props: { article: articlesRes.data[0], categories: categoriesRes },
     revalidate: 5,
