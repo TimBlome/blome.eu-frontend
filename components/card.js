@@ -19,7 +19,7 @@ const Card = ({ article }) => {
         </div>
         <div className="p-4 text-sm">
           <Moment format="MMM Do YYYY">
-            {article.attributes.published_at}
+            {article.attributes.publishedAt}
           </Moment>
         </div>
       </article>

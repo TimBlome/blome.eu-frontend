@@ -41,7 +41,7 @@ const Article = ({ article, categories }) => {
         <div className="text-sm my-5">
           <Author author={article.attributes.author}></Author>
           <Moment format="MMM Do YYYY">
-                    {article.attributes.published_at}
+                    {article.attributes.publishedAt}
           </Moment>
         </div>
       </div>
@@ -74,7 +74,7 @@ export async function getStaticProps({ params }) {
   console.log(articlesRes, articlesRes.data[0].attributes, articlesRes.data[0].attributes.author.data.attributes );
   return {
     props: { article: articlesRes.data[0], categories: categoriesRes },
-    revalidate: 1,
+    revalidate: 5,
   }
 }
 
