@@ -25,7 +25,7 @@ const Article = ({ article, categories }) => {
     <Layout categories={categories.data}>
       <Seo seo={seo} />
       <div
-        className="bg-cover bg-center text-white text-8xl lg:py-20 py-5 text-center rounded-t-sm overflow-hidden"
+        className="bg-cover bg-center text-white text-2xl lg:text-8xl lg:py-20 py-5 text-center rounded-t-sm overflow-hidden"
         style={heroStyle}
       >
         <h1>{article.attributes.title}</h1>
