@@ -1,13 +1,16 @@
 import Nav from "./nav"
 import Link from "next/link"
 
-const Layout = ({ children, categories, seo }) => (
+const Layout = ({ children, categories, seo, noMargin }) => { 
+
+  let classes = noMargin ? ["flex-auto"] : ["flex-auto md:container md:mx-auto p-4"];
+  return(
   <>
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col h-screen">
       <div>
         <Nav categories={categories} />
       </div>
-      <div className="flex-1 md:container md:mx-auto p-4">{children}</div>
+      <div className={classes}>{children}</div>
       <footer className="flex-none p-4 bg-slate-200 align-middle ">
         <div className="flex gap-4 justify-center">
           <Link href="/" passHref>
@@ -28,6 +31,6 @@ const Layout = ({ children, categories, seo }) => (
       </footer>
     </div>
   </>
-)
+)}
 
 export default Layout
