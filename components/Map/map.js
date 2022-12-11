@@ -24,6 +24,8 @@ const Map = ({ children, className, ...rest }) => {
         iconRetinaUrl: iconUrl.src,
         iconUrl: iconUrl.src,
         shadowUrl: shadowUrl.src,
+        iconAnchor:[20,20],
+        shadowAnchor:[20,30]
       });
     })();
   }, []);
