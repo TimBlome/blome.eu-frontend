@@ -1,12 +1,35 @@
+import Link from "next/link"
+import ReactMarkdown from "react-markdown"
+import Image from "../../../components/image"
 import Layout from "../../../components/layout"
 import Seo from "../../../components/seo"
 import { fetchAPI } from "../../../lib/api"
+import { getStrapiMedia } from "../../../lib/media"
 
-const Leg = ({ legs, categories, homepage }) => {
+const Leg = ({ leg, categories, homepage }) => {
     return (
         <Layout categories={categories}>
         <Seo seo={homepage.attributes.seo} />
-        {/* Articles */}
+        <h1>{leg.attributes.Location}</h1>
+        <div className="flex flex-wrap flex-col lg:flex-row">
+          <article className="flex-none basis-1/3">
+            <div className="prose">
+              <ReactMarkdown source={leg.attributes.Content}
+                escapeHtml={false}></ReactMarkdown>
+            </div>
+          </article>
+          <main className="flex-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              {leg.attributes.Images.data.map(image => (
+                  <>
+                    <Image key={image.id} image={image} fill></Image>
+                  </>
+              ))}
+            </div>
+          </main>
+        </div>
+       
+        <Link passHref href="/journey"><a className="cursor-pointer text-sm">Zur Karte</a></Link>
         </Layout>
     )
 }
@@ -23,10 +46,10 @@ export async function getStaticPaths() {
     }
   }
 
-export async function getStaticProps() {
+export async function getStaticProps({ params }) {
     // Run API calls in parallel
-    const [journeyRes, categoriesRes, homepageRes] = await Promise.all([
-      fetchAPI("/journey", { populate: "*", sort: "id" }),
+    const [legRes, categoriesRes, homepageRes] = await Promise.all([
+      fetchAPI("/journey-legs/" + params.slug, { populate: "*"}),
       fetchAPI("/categories", { populate: "*" }),
       fetchAPI("/homepage", {
         populate: {
@@ -35,10 +58,9 @@ export async function getStaticProps() {
         },
       }),
     ])
-  
     return {
       props: {
-        legs: journeyRes.data,
+        leg: legRes.data,
         categories: categoriesRes.data,
         homepage: homepageRes.data,
       },

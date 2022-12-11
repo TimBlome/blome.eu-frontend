@@ -4,9 +4,7 @@ import * as ReactLeaflet from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import styles from './Map.module.css';
-
-import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
-import iconUrl from 'leaflet/dist/images/marker-icon.png';
+import iconUrl from '../../assets/icons/icons8-van-64.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 
 const { MapContainer } = ReactLeaflet;
@@ -23,7 +21,7 @@ const Map = ({ children, className, ...rest }) => {
       delete L.Icon.Default.prototype._getIconUrl;
 
       L.Icon.Default.mergeOptions({
-        iconRetinaUrl: iconRetinaUrl.src,
+        iconRetinaUrl: iconUrl.src,
         iconUrl: iconUrl.src,
         shadowUrl: shadowUrl.src,
       });

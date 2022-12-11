@@ -8,7 +8,7 @@ import Author from "../../components/author"
 import { getStrapiMedia } from "../../lib/media"
 
 const Article = ({ article, categories }) => {
-  const imageUrl = getStrapiMedia(article.attributes.image)
+  const imageUrl = getStrapiMedia(article.attributes.image.data)
 
   const seo = {
     metaTitle: article.attributes.title,
