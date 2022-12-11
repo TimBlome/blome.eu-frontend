@@ -1,6 +1,6 @@
 {
   "extends": [
-    "next/babel",
+    "next",
     "prettier"
   ],
   "plugins": [
