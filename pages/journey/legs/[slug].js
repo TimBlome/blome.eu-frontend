@@ -10,7 +10,11 @@ const Leg = ({ leg, categories, homepage }) => {
     return (
         <Layout categories={categories}>
         <Seo seo={homepage.attributes.seo} />
-        <h1>{leg.attributes.Location}</h1>
+        <Link passHref href={{
+              pathname: '/journey',
+              query: { focus: leg.id },
+            }}><a className="cursor-pointer text-sm">⬅️back</a></Link>
+        <h1 className="text-2xl my-2">{leg.attributes.Location}</h1>
         <div className="flex flex-wrap flex-col lg:flex-row">
           <article className="flex-none basis-1/3">
             <div className="prose">
@@ -28,8 +32,6 @@ const Leg = ({ leg, categories, homepage }) => {
             </div>
           </main>
         </div>
-       
-        <Link passHref href="/journey"><a className="cursor-pointer text-sm">Zur Karte</a></Link>
         </Layout>
     )
 }

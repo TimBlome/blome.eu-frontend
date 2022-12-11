@@ -10,11 +10,8 @@ const Nav = ({ categories }) => {
     >
       <div className="flex-auto">
         <Link href="/">
-          <h1 className="font-bold cursor-pointer">Tim Moritz Blome</h1>
+          <h1 className="text-xl font-bold cursor-pointer">Tim Moritz Blome</h1>
         </Link>
-        <div className="w-4/5">
-          <p>I am into IT and currently on a roadtrip around europe</p>
-        </div>
       </div>
       <div className="flex-1 flex-grow">
         <div className="flex gap-4 flex-row-reverse">
@@ -30,6 +27,9 @@ const Nav = ({ categories }) => {
           })}
         </div>
       </div>
+      <div className="flex-none w-full text-sm">
+          <p>I am into IT and currently on a roadtrip around europe. <Link href="/journey" passHref><a className="font-semibold underline hover:underline-offset-2">Follow my journey</a></Link></p>
+        </div>
     </nav>
   )
 }

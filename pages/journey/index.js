@@ -4,19 +4,22 @@ import { fetchAPI } from "../../lib/api"
 import ReactMarkdown from "react-markdown"
 import Map from "../../components/Map"
 import Link from "next/link"
+import { useRouter } from "next/dist/client/router"
 
 
 const DEFAULT_CENTER = [51.9919086, 8.6249415]
 
 const Journey = ({ journey, legs, categories, homepage }) => {
-  const lastLeg = legs?.slice(-1)[0];
+  const router = useRouter();
+  const {focus} = router.query;
+  const lastLeg = legs.find(leg => leg.id == focus) ?? legs?.slice(-1)[0];
   const polyline = legs?.map(leg => [leg.attributes.Lat, leg.attributes.Lon]);
   const blackOptions = { color: 'black', smoothFactor: 10 }
     return (
         <Layout categories={categories} noMargin={true}>
         <Seo seo={homepage.attributes.seo} />
         <div className="m-0 p-o h-full">
-          <Map className="w-full h-full" center={[lastLeg.attributes.Lat, lastLeg.attributes.Lon]} zoom={12}>
+          <Map className="w-full h-full" center={[lastLeg.attributes.Lat, lastLeg.attributes.Lon]} zoom={8}>
             {({ TileLayer, Marker, Popup, Polyline }) => (
               <>
                 <TileLayer
