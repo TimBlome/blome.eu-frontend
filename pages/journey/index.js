@@ -32,7 +32,7 @@ const Journey = ({ journey, legs, categories, homepage }) => {
                     <Marker key={leg.id} position={[leg.attributes.Lat, leg.attributes.Lon]}>
                       <Popup>
                         <h2 className="text-lg">{leg.attributes.Location}</h2>
-                        <p>{leg.attributes.Content}</p>
+                        <p>{leg.attributes.Description}</p>
                         <Link href={"/journey/legs/" + leg.id}>Mehr lesen...</Link>
                       </Popup>
                     </Marker>
