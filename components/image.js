@@ -12,7 +12,6 @@ const Image = ({ image, style, fill }) => {
     <NextImage
       loader={loader}
       layout="responsive"
-      fill={true}
       width={fill ? (width || "100%") : null}
       height={fill? (height || "100%") : null}
       objectFit={fill ? "cover": "contain"}
