@@ -24,6 +24,7 @@ const Leg = ({ leg, categories, homepage, articles }) => {
             </div>
           </article>
           <main className="col-span-4 xl:col-span-1 order-last xl:order-2 xl:row-span-2">
+            <h2 className="text-xl my-4">Bilder aus {leg.attributes.Location}:</h2>
             <div className="grid grid-cols-1 gap-2">
               {leg.attributes.Images.data.map(image => (
                   <Image key={image.id} image={image} fill></Image>
@@ -31,6 +32,7 @@ const Leg = ({ leg, categories, homepage, articles }) => {
             </div>
           </main>
           <div className="col-span-4 xl:col-span-3 xl:order-last">
+            <h2 className="text-xl my-4">Weitere Artikel:</h2>
             <Articles articles={articles}></Articles>
           </div>
         </div>
