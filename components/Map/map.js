@@ -4,12 +4,13 @@ import * as ReactLeaflet from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import styles from './map.module.css';
-import iconUrl from '../../assets/icons/icons8-van-64.png';
-import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 
 const { MapContainer } = ReactLeaflet;
+const iconUrl = '/icons8-van-64.png';
+const shadowUrl = '/marker-shadow.png';
 
 const Map = ({ children, className, ...rest }) => {
+  
   let mapClassName = styles.map;
 
   if ( className ) {
@@ -21,9 +22,9 @@ const Map = ({ children, className, ...rest }) => {
       delete L.Icon.Default.prototype._getIconUrl;
 
       L.Icon.Default.mergeOptions({
-        iconRetinaUrl: iconUrl.src,
-        iconUrl: iconUrl.src,
-        shadowUrl: shadowUrl.src,
+        iconRetinaUrl: iconUrl,
+        iconUrl: iconUrl,
+        shadowUrl: shadowUrl,
         iconAnchor:[20,20],
         shadowAnchor:[20,30]
       });
