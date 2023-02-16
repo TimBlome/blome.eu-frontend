@@ -20,16 +20,25 @@ const Nav = ({ categories }) => {
               <Link
                 key={category.id}
                 href={`/category/${category.attributes.slug}`}
+                className="navbar-item"
               >
-                <a className="navbar-item">{category.attributes.name}</a>
+                {category.attributes.name}
               </Link>
             )
           })}
         </div>
       </div>
       <div className="flex-none w-full text-sm">
-          <p>I am into IT and currently on a roadtrip around europe. <Link href="/journey" passHref><a className="font-semibold underline hover:underline-offset-2">Follow my journey</a></Link></p>
-        </div>
+        <p>
+          I am into IT and currently on a roadtrip around europe.{" "}
+          <Link
+            href="/journey"
+            className="font-semibold underline hover:underline-offset-2"
+          >
+            Follow my journey
+          </Link>
+        </p>
+      </div>
     </nav>
   )
 }
